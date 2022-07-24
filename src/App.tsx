@@ -3,11 +3,20 @@ import { queryDaily } from './api/queryWeather';
 import TextField from '@mui/material/TextField';
 import { Container, Typography } from '@mui/material';
 import WeatherCard from './components/WeatherCard';
+import { useState } from 'react';
+import { openWeatherType } from './components/WeatherCard';
 
 function App() {
-    queryDaily('Auckland').then((value) => {
-        console.log(value);
-    });
+    async function handleSubmit(event: any) {
+        // Stop refresh of page on submit
+        event.preventDefault();
+        const data = await queryDaily(input);
+        console.log(data);
+        setWeatherData(data);
+    }
+
+    const [input, setInput] = useState('');
+    const [weatherData, setWeatherData] = useState(null);
     return (
         <Container>
             <Typography
@@ -18,13 +27,28 @@ function App() {
             >
                 Current Weather
             </Typography>
-            <TextField
-                id="outlined-basic"
-                label="City"
-                variant="outlined"
-                fullWidth={true}
-            />
-            <WeatherCard />
+            <form
+                noValidate
+                autoComplete="off"
+                onSubmit={async (event) => {
+                    await handleSubmit(event);
+                }}
+            >
+                <TextField
+                    id="outlined-basic"
+                    label="City"
+                    variant="outlined"
+                    fullWidth={true}
+                    onChange={(e) => {
+                        setInput(e.target.value);
+                    }}
+                />
+            </form>
+            {weatherData ? (
+                <WeatherCard {...(weatherData as openWeatherType)} />
+            ) : (
+                <div></div>
+            )}
         </Container>
     );
 }

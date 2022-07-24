@@ -1,14 +1,14 @@
 import { Card } from '@mui/material';
 import { CardHeader } from '@mui/material';
 
-type weatherType = {
+export type weatherType = {
     description: string;
     icon: string;
     main: string;
 };
 
 // speed is in km
-type openWeatherType = {
+export type openWeatherType = {
     name: string;
     main: {
         humidity: number;
