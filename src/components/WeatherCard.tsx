@@ -23,8 +23,14 @@ export type openWeatherType = {
 
 export default function WeatherCard(props: openWeatherType) {
     return (
-        <Card>
-            <CardHeader />
-        </Card>
+        <div>
+            <p>name: {props.name}</p>
+            <p>humidity: {props.main.humidity}</p>
+            <p>feels_like: {props.main.feels_like}</p>
+            <p>datetime: {props.dt}</p>
+            <p>wind speed: {props.wind.speed}</p>
+            <p>main: {props.weather[0].main}</p>
+            <p>description: {props.weather[0].description}</p>
+        </div>
     );
 }
