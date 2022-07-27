@@ -20,10 +20,11 @@ function App() {
     return (
         <Container>
             <Typography
-                variant="h2"
+                variant="h4"
                 component="h1"
                 align="center"
                 color="primary"
+                gutterBottom
             >
                 Current Weather
             </Typography>
@@ -45,7 +46,16 @@ function App() {
                 />
             </form>
             {weatherData ? (
-                <WeatherCard {...(weatherData as openWeatherType)} />
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        paddingTop: '30px',
+                        paddingBottom: '30px',
+                    }}
+                >
+                    <WeatherCard {...(weatherData as openWeatherType)} />
+                </div>
             ) : (
                 <div></div>
             )}
