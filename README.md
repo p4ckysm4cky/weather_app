@@ -1,4 +1,21 @@
-# Getting Started with Create React App
+# Weather app
+
+
+
+## About
+
+Web app that uses the [openweathermap](https://openweathermap.org/) api to display weather conditions of a city.
+
+
+
+## Required configuration
+
+* Create a `.env` file
+* Add `REACT_APP_WEATHERKEY = {api_key_here}`
+
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
